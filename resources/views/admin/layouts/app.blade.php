@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <meta name="keywords"
         content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example">
-        <title>{{ config('app.name') }}</title>
+        <title>{{ config('app.name') }} </title>
     <!-- Css -->
     <link rel="stylesheet" href="{{ asset('admin-assets/dist/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/dist/all.css') }}">
-    {{-- <link rel="stylesheet" href="./dist/all.css"> --}}
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
 </head>
 
@@ -49,6 +51,8 @@
 
     </div>
     <script src="{{asset('admin-assets/js/main.js')}}"></script>
+        <!-- jQuery (you can use a CDN or your local file) -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </body>
 
 </html>

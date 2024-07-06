@@ -2,37 +2,23 @@
 
   <ul class="list-reset flex flex-col">
       <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white">
-          <a href="index.html"
+          <a href="{{route('admin.index')}}"
              class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
               <i class="fas fa-tachometer-alt float-left mx-2"></i>
               Dashboard
               <span><i class="fas fa-angle-right float-right"></i></span>
           </a>
       </li>
+     
       <li class="w-full h-full py-3 px-2 border-b border-light-border">
-          <a href="forms.html"
-             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-              <i class="fab fa-wpforms float-left mx-2"></i>
-              Forms
-              <span><i class="fa fa-angle-right float-right"></i></span>
-          </a>
-      </li>
-      <li class="w-full h-full py-3 px-2 border-b border-light-border">
-          <a href="buttons.html"
+          <a href="{{route('admin.manageUser')}}"
              class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
               <i class="fas fa-grip-horizontal float-left mx-2"></i>
-              Buttons
+              Manage User
               <span><i class="fa fa-angle-right float-right"></i></span>
           </a>
       </li>
-      <li class="w-full h-full py-3 px-2 border-b border-light-border">
-          <a href="tables.html"
-             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-              <i class="fas fa-table float-left mx-2"></i>
-              Tables
-              <span><i class="fa fa-angle-right float-right"></i></span>
-          </a>
-      </li>
+   
       <li class="w-full h-full py-3 px-2 border-b border-light-border">
           <a href="ui.html"
              class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">

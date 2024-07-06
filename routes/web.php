@@ -27,8 +27,12 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('password/reset', [Auth\ResetPasswordController::class, 'submitResetPasswordForm'])->name('submit.password.reset');
 });
 // auth route for auth
-Route::group(['prefix' => 'admin','as' => 'admin.','middleware' => 'auth'], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     // this route after authenticated accessable
     Route::get('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [admin\DashboardController::class, 'index'])->name('index');
+    Route::get('/manage-user', [admin\DashboardController::class, 'manageUser'])->name('manageUser');
+    Route::post('/edit-user', [admin\DashboardController::class, 'editUser'])->name('editUser');
+    Route::post('/update-user', [admin\DashboardController::class, 'updateUser'])->name('updateUser');
+    Route::get('/user/delete/{id}', [admin\DashboardController::class, 'destroy']);
 });
