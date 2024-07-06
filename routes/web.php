@@ -16,7 +16,7 @@ use App\Http\Controllers\Admin;
 */
 
 Route::get('/', function () {
-    return view('admin.index');
+    return view('admin.pages.company-profile');
 });
 // guset route for login and register 
 Route::group(['middleware' => 'guest'], function () {
@@ -30,9 +30,15 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'auth'], function () {
     // this route after authenticated accessable
     Route::get('/logout', [Auth\LoginController::class, 'logout'])->name('logout');
-    Route::get('/dashboard', [admin\DashboardController::class, 'index'])->name('index');
-    Route::get('/manage-user', [admin\DashboardController::class, 'manageUser'])->name('manageUser');
-    Route::post('/edit-user', [admin\DashboardController::class, 'editUser'])->name('editUser');
-    Route::post('/update-user', [admin\DashboardController::class, 'updateUser'])->name('updateUser');
-    Route::get('/user/delete/{id}', [admin\DashboardController::class, 'destroy']);
+    Route::get('/dashboard', [Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/manage-user', [Admin\DashboardController::class, 'manageUser'])->name('manageUser');
+    Route::post('/edit-user', [Admin\DashboardController::class, 'editUser'])->name('editUser');
+    Route::post('/update-user', [Admin\DashboardController::class, 'updateUser'])->name('updateUser');
+    Route::get('/user/delete/{id}', [Admin\DashboardController::class, 'destroy']);
+    // company profile routing 
+    Route::get('/company_profiles', [Admin\CompanyProfileController::class , 'index'])->name('index');
+    Route::post('/company_profiles/create', [Admin\CompanyProfileController::class , 'store'])->name('create');
+    Route::post('/company_profiles/edit', [Admin\CompanyProfileController::class , 'edit'])->name('edit');
+    Route::post('/company_profiles/update', [Admin\CompanyProfileController::class , 'update'])->name('update');
+    Route::post('/company_profiles/delete', [Admin\CompanyProfileController::class , 'destroy'])->name('destroy');
 });

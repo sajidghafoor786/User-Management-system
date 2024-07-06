@@ -23,7 +23,7 @@ class LoginController extends Controller
             } else {
                 if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
                     session()->flash('success', 'user created successfully!');
-                    return redirect()->route('admin.index');
+                    return redirect()->route('admin.dashboard');
                 } else {
                     session()->flash('error', 'Email or password is incorrect');
                     return redirect()->back();

@@ -85,7 +85,7 @@
             <div class="modal-content shadow-lg p-5">
                 <div class="border-b p-2 pb-3 pt-0 mb-4">
                     <div class="flex justify-between items-center">
-                        Modal header
+                        Edit User Profile
                         <span class='close-modal cursor-pointer px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200'>
                             <i class="fas fa-times text-gray-700"></i>
                         </span>
