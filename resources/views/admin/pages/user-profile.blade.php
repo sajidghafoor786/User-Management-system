@@ -1,82 +1,56 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div class="flex flex-col">
-        @include('admin.message')
-        <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
-            <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
-                <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
-                    Dashboard/Manage-user
+    <div class="container mx-auto py-12">
+     
+        <div class="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="p-6 ">
+                @include('admin.message')
+                <div class="justify-center bg-green-600 text-center" style="margin: auto;">
+
+                    <h1 class="text-3xl font-bold text-gray-800 ">Details of User</h1>
                 </div>
-                <div class="p-3">
-                    <table class="table-responsive w-full table text-grey-darkest">
-                        <thead class="bg-grey-dark text-white text-normal">
-                            <tr>
-                                <th class="border w-1/8 px-4 py-2">User Id</th>
-                                <th class="border w-1/7 px-4 py-2">User Name</th>
-                                <th class="border w-1/6 px-4 py-2">Email</th>
-                                <th class="border w-1/6 px-4 py-2">Designation</th>
-                                <th class="border w-1/6 px-4 py-2">Contact</th>
-                                <th class="border w-1/7 px-4 py-2">Address</th>
-                                <th class="border w-1/7 px-4 py-2">role</th>
-                                <th class="border w-1/6 px-4 py-2">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($user as $item)
-                                <tr>
-                                    <td class="border px-4 py-2">{{ $item->id }}</td>
-                                    <td class="border px-4 py-2">{{ $item->name }}</td>
-                                    <td class="border px-4 py-2">{{ $item->email }}</td>
-                                    @if ($item->designation != null)
-                                        <td class="border px-4 py-2">{{ $item->designation }}</td>
-                                    @else
-                                        <td class="border px-4 py-2">N/A</td>
-                                    @endif
-                                    @if ($item->contact != null)
-                                        <td class="border px-4 py-2">{{ $item->contact }}</td>
-                                    @else
-                                        <td class="border px-4 py-2">N/A</td>
-                                    @endif
-                                    @if ($item->address != null)
-                                        <td class="border px-4 py-2">{{ $item->address }}</td>
-                                    @else
-                                        <td class="border px-4 py-2">N/A</td>
-                                    @endif
-                                    @if ($item->role == '0')
-                                        <td class="border px-4 py-2">
-                                            <button class="bg-green-600  text-white font-light px-1  rounded-full">
-                                                User
-                                            </button>
-                                        </td>
-                                    @else
-                                        <td class="border px-4 py-2">
-                                            <button class="bg-red-500  text-white font-light px-1  rounded-full">
-                                                admin
-                                            </button>
-                                        </td>
-                                    @endif
+                <h2 class="text-3xl font-bold text-gray-800 mt-4"> {{ Auth::user()->name }}</h2>
+                <p><strong>Designation:</strong> {{ Auth::user()->designation }}</p>
+                <div class="mt-6 py-5">
+                    <h4 class="text-lg font-semibold text-gray-700">Contact Information</h4>
+                    <ul class="mt-2 text-gray-600">
+                        <li class="py-2"><strong>Address:</strong> {{ Auth::user()->email }}</li>
+                        <li class="py-2"><strong>Phone:</strong> {{ Auth::user()->contact }}</li>
+                        <li class="py-2"><strong>Email:</strong> {{ Auth::user()->address }}</li>
+
+                        @if (Auth::user()->role == '0')
+                            <li class="py-2"><strong>Role:</strong> <button
+                                    class="bg-red-500  text-white font-light px-1  rounded-full">
+                                    User
+                                </button></li>
+                        @else
+                            <li class="py-2"><strong>Role:</strong> <button
+                                    class="bg-green-500  text-white font-light px-1  rounded-full">
+                                    admin
+                                </button></li>
+                        @endif
 
 
-                                    <td class="border px-4 py-2">
+                    </ul>
+                </div>
+                <div class="mt-6 flex justify-end space-x-4 ">
+                    <div>
+                        <button data-modal='centeredModal' href="javascript:void(0);"
+                            onclick="EditUser({{ Auth::user()->id }});"
+                            class="modal-trigger px-4 py-2 mx-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</button>
+                    </div>
 
-                                        <a href="javascript:void(0);" onclick="EditUser({{ $item->id }});"
-                                            data-modal='centeredModal'
-                                            class=" modal-trigger bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                            <i class="fas fa-edit"></i></a>
-                                        <a href="{{url('admin/user/delete', $item->id)}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500" >
-                                            <i class="fas fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
+                    <form action="{{ url('/user/delete/') }}" method="get"
+                        onsubmit="return confirm('Are you sure you want to delete this Account ?');">
+                        @csrf
+                        @method('GET')
+                        <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                        <button type="submit"
+                            class="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Delete Account</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <!--/Grid Form-->
     </div>
     {{-- edit modal  --}}
     <div id='centeredModal' class="modal-wrapper">
@@ -92,7 +66,7 @@
                     </div>
                 </div>
                 <!-- Modal content -->
-                <form  class="w-full" method="POST" action="{{route('admin.updateUser')}}">
+                <form class="w-full" method="POST" action="{{ route('admin.updateUser') }}">
                     @csrf
                     <input type="hidden" name="editId" id="editId">
                     <div class="flex flex-wrap -mx-3 mb-2">
@@ -171,7 +145,8 @@
                     </div>
 
                     <div class="mt-5">
-                        <button class='bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded' type="submit"> Submit
+                        <button class='bg-green-500 hover:bg-green-800 text-white font-bold py-2 px-4 rounded'
+                            type="submit"> Submit
                         </button>
                         <span
                             class='close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded'>

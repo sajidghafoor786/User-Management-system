@@ -80,6 +80,7 @@ class CompanyProfileController extends Controller
         $companyProfile->description = $request->description;
         $companyProfile->phone = $request->phone;
         $companyProfile->website = $request->website;
+        $companyProfile->role = $request->role;
         // upload image in database 
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');

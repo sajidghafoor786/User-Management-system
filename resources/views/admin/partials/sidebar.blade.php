@@ -13,7 +13,7 @@
       <li class="w-full h-full py-3 px-2 border-b border-light-border {{ Request::is('admin/manage-user') ? 'bg-white' : '' }}">
           <a href="{{route('admin.manageUser')}}"
              class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-              <i class="fas fa-grip-horizontal float-left mx-2"></i>
+             <i class="fas fa-user-cog float-left mx-2"></i>
               Manage User
               <span><i class="fa fa-angle-right float-right"></i></span>
           </a>
@@ -22,8 +22,32 @@
       <li class="w-full h-full py-3 px-2 border-b border-light-border {{ Request::is('admin/company_profiles') ? 'bg-white' : '' }}">
           <a href="{{route('admin.index')}}"
              class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
-              <i class="fab fa-uikit float-left mx-2"></i>
+              <i class="fas fa-building float-left mx-2"></i>
               Company profile
+              <span><i class="fa fa-angle-right float-right"></i></span>
+          </a>
+      </li>
+      <li class="w-full h-full py-3 px-2 border-b border-light-border {{ Request::is('admin/password/change') ? 'bg-white' : '' }}">
+          <a href="{{route('admin.password.change')}}"
+             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+             <i class="fas fa-key float-left mx-2"></i>
+             Change Password
+              <span><i class="fa fa-angle-right float-right"></i></span>
+          </a>
+      </li>
+      <li class="w-full h-full py-3 px-2 border-b border-light-border {{ Request::is('admin/users') ? 'bg-white' : '' }}">
+          <a href="{{route('admin.users.index')}}"
+             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+             <i class="fas fa-user float-left mx-2"></i>
+             User profile
+              <span><i class="fa fa-angle-right float-right"></i></span>
+          </a>
+      </li>
+      <li class="w-full h-full py-3 px-2 border-b border-light-border {{ Request::is('admin/company_profiles') ? 'bg-white' : '' }}">
+          <a href="{{route('admin.index')}}"
+             class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
+             <i class="fas fa-sign-out-alt  float-left mx-2"></i>
+              Logout
               <span><i class="fa fa-angle-right float-right"></i></span>
           </a>
       </li>
