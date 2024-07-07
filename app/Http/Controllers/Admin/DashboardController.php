@@ -68,6 +68,7 @@ class DashboardController extends Controller
     {
 
         $user = User::find($request->id);
+        // dd( $user );
         Auth::logout();
         $user->delete();
 

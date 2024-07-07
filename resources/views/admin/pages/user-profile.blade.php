@@ -40,7 +40,7 @@
                             class="modal-trigger px-4 py-2 mx-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">Edit</button>
                     </div>
 
-                    <form action="{{ url('/user/delete/') }}" method="get"
+                    <form action="{{ url('admin/delete/account') }}" method="get"
                         onsubmit="return confirm('Are you sure you want to delete this Account ?');">
                         @csrf
                         @method('GET')

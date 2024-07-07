@@ -44,7 +44,7 @@
           </a>
       </li>
       <li class="w-full h-full py-3 px-2 border-b border-light-border {{ Request::is('admin/company_profiles') ? 'bg-white' : '' }}">
-          <a href="{{route('admin.index')}}"
+          <a href="{{ route('admin.logout') }}"
              class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
              <i class="fas fa-sign-out-alt  float-left mx-2"></i>
               Logout
