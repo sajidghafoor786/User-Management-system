@@ -18,6 +18,12 @@ class ForgotPasswordController extends Controller
                 'email' => 'required|email|exists:users,email',
             ]);
 
+        //    if already reset password send link 
+        $alreadySendEmail =   DB::table('password_reset_tokens')->where(['email' => $request->email])->get();
+        
+        if($alreadySendEmail){
+            return back()->with('error', 'Already send reset password link on your Email!');
+        }
             $token = Str::random(64);
 
             DB::table('password_reset_tokens')->insert([
