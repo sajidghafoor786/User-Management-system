@@ -6,10 +6,10 @@
             class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
             <div class="p-4 flex flex-col">
                 <a href="#" class="no-underline text-white text-2xl">
-                    $244
+                   {{$totalEmp}}
                 </a>
                 <a href="#" class="no-underline text-white text-lg">
-                    Total Sales
+                    Total Employees
                 </a>
             </div>
         </div>
@@ -17,10 +17,10 @@
         <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
             <div class="p-4 flex flex-col">
                 <a href="#" class="no-underline text-white text-2xl">
-                    $199.4
+                   {{$totaladmin}}
                 </a>
                 <a href="#" class="no-underline text-white text-lg">
-                    Total Cost
+                    Admin Role
                 </a>
             </div>
         </div>
@@ -28,10 +28,10 @@
         <div class="shadow bg-warning border-l-8 hover:bg-warning-dark border-warning-dark mb-2 p-2 md:w-1/4 mx-2">
             <div class="p-4 flex flex-col">
                 <a href="#" class="no-underline text-white text-2xl">
-                    900
+                   {{$totaluser}}
                 </a>
                 <a href="#" class="no-underline text-white text-lg">
-                    Total Users
+                    User Role
                 </a>
             </div>
         </div>
@@ -39,10 +39,10 @@
         <div class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2">
             <div class="p-4 flex flex-col">
                 <a href="#" class="no-underline text-white text-2xl">
-                    500
+                   {{$totalcustomer}}
                 </a>
                 <a href="#" class="no-underline text-white text-lg">
-                    Total Products
+                    Total Clients
                 </a>
             </div>
         </div>

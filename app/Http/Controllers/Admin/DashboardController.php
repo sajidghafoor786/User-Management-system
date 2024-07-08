@@ -13,7 +13,11 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
 
-        return view('admin.index');
+        $totalEmp = User::count();
+        $totaluser = User::where('role', '0')->count();
+        $totaladmin = User::where('role', '1')->count();
+        $totalcustomer = User::where('role', '2')->count();
+        return view('admin.index',compact('totalEmp','totaluser','totaladmin','totalcustomer'));
     }
     public function manageUser()
     {
